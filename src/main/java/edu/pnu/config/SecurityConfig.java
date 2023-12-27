@@ -69,9 +69,11 @@ public class SecurityConfig {
 		CorsConfiguration config = new CorsConfiguration();
 		config.addAllowedOrigin("http://localhost:3000"); // 교차를 허용할 Origin
 		config.addAllowedOrigin("http://10.125.121.220:3000");
+		config.addAllowedOrigin("http://10.125.121.219 :3000");
 		config.addAllowedMethod(CorsConfiguration.ALL); // 교차를 허용할 Method
 		config.addAllowedHeader(CorsConfiguration.ALL); // 교차를 허용할 Header
 		config.setAllowCredentials(true);
+		config.addExposedHeader("Authorization");
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config); // 교차를 허용할 Origin의 URL
 		return source;

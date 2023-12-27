@@ -2,10 +2,14 @@ package edu.pnu.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.Claim;
 
 import edu.pnu.domain.Member;
 import edu.pnu.domain.Role;
@@ -38,6 +42,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memRepo.save(mem).getUsername();
 	}
+	
 	@Override
 	public boolean getMember(String id) {
 		boolean isExist = false;
@@ -49,5 +54,23 @@ public class MemberServiceImpl implements MemberService{
 		return isExist;
 	}
 	
+	@Override
+	public Member getMypage(String token) {
+		Map<String, Claim> member = JWT.decode(token).getClaims();
+		Member findMember = memRepo.findByUsername(member.get("id").asString()).get();
+		return findMember;
+	}
+
+	@Override
+	public boolean deleteMember(String jwtToken, String pwd) {
+		Map<String, Claim> mem =  JWT.decode(jwtToken).getClaims();
+		Member find = memRepo.findByUsername(mem.get("id").asString()).get();
+		if (passwordEncoder.matches(pwd, find.getPwd())) {
+			memRepo.delete(find);
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 }

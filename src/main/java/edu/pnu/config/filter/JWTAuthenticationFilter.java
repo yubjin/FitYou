@@ -29,6 +29,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
+		System.out.println("request : " + request);
 		ObjectMapper mapper = new ObjectMapper();
 		Member member = null;
 		try {
@@ -50,7 +51,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Authentication authResult) throws IOException, ServletException {
 		User user = (User) authResult.getPrincipal();
 		String token = JWT.create()
-		.withExpiresAt(new Date(System.currentTimeMillis()+1000*60*10))
+		.withExpiresAt(new Date(System.currentTimeMillis()+1000*60*100))
 		.withClaim("id", user.getUsername())
 		.sign(Algorithm.HMAC256("edu.pnu.jwt"));
 		response.addHeader("Authorization", "Bearer " + token);

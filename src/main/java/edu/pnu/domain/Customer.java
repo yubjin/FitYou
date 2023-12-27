@@ -2,21 +2,23 @@ package edu.pnu.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
+import net.jcip.annotations.Immutable;
 
 @Getter
-@Setter
 @ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class MemberDetail {
+@Table(name="customer")		//Mysql view 사용
+@Immutable
+public class Customer {
 	@Id
 	private Long seq;
 	
@@ -30,10 +32,5 @@ public class MemberDetail {
 	private String size;		//사이즈
 	private String sellPrice;		//판매금액
 	private int sellCount;		//수량
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name="cusNum") private Member member;
-	 */
+	
 }

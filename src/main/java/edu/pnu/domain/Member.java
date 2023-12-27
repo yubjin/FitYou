@@ -29,6 +29,7 @@ public class Member {
 	private String pwd;
 	
 	private int age;
+	
 	private int cusNum;
 	
 	private String regidate;
@@ -38,4 +39,9 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
+	
+	/*
+	 * @OneToMany(mappedBy="member", fetch=FetchType.EAGER) private
+	 * List<MemberDetail> memberDetailList = new ArrayList<MemberDetail>();
+	 */
 }
