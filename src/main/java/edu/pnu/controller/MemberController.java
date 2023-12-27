@@ -51,7 +51,7 @@ public class MemberController {
 	
 	@GetMapping("/idcheck")
 	public boolean getMember(String id) {
-		boolean isExist = memService.getMember(id);
+		boolean isExist = memService.isMember(id);
 		return isExist;
 	}
 	@GetMapping("/getmem")

@@ -44,14 +44,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public boolean getMember(String id) {
-		boolean isExist = false;
+	public boolean isMember(String id) {	//bool 타입인 경우 is~로 이름을 짓는다.
 		Optional<Member> findMember = memRepo.findByUsername(id);
 		System.out.println(findMember);
-		if (findMember.isPresent()) 
-			isExist = true;
-		
-		return isExist;
+		return findMember.isPresent();	//값이 있는 경우 true, 없는 경우 false로 나가기 때문에 따로 isExist를 만들어서 내보낼 필요가 없다!
 	}
 	
 	@Override

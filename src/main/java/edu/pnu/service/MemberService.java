@@ -6,7 +6,7 @@ import edu.pnu.dto.MemberDTO;
 public interface MemberService {
 	String join(MemberDTO memDTO);
 
-	boolean getMember(String id);
+	boolean isMember(String id);
 
 	Member getMypage(String token);
 
