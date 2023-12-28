@@ -50,7 +50,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/idcheck")
-	public boolean getMember(String id) {
+	public boolean isMember(String id) {
 		boolean isExist = memService.isMember(id);
 		return isExist;
 	}
@@ -67,5 +67,4 @@ public class MemberController {
 		}
 		return ResponseEntity.badRequest().body("");
 	}
-
 }
