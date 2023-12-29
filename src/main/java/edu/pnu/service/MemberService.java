@@ -4,7 +4,7 @@ import edu.pnu.domain.Member;
 import edu.pnu.dto.MemberDTO;
 
 public interface MemberService {
-	String join(MemberDTO memDTO);
+	Member join(MemberDTO memDTO);
 
 	boolean isMember(String id);
 

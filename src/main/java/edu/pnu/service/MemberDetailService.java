@@ -8,4 +8,6 @@ public interface MemberDetailService {
 
 	List<Customer> getCusHistory(int cusNum);
 
+	boolean isLike(int cusNum);
+
 }

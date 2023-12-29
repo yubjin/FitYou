@@ -30,9 +30,9 @@ public class MemberController {
 	
 	@PostMapping("/join")
 	@ResponseBody
-	public String join(@RequestBody MemberDTO memDTO) {
-		String memberId = memService.join(memDTO);
-		return "join" + memberId;
+	public Member join(@RequestBody MemberDTO memDTO) {
+		Member mem = memService.join(memDTO);
+		return mem;
 	}
 	
 	@DeleteMapping("/delete")
@@ -66,5 +66,13 @@ public class MemberController {
 			return ResponseEntity.ok(myData);
 		}
 		return ResponseEntity.badRequest().body("");
+	}
+	
+	@GetMapping("/survey")
+	public boolean isLike(String cusNum) {
+		if (cusNum == "")
+			return false;
+		else 
+			return true;
 	}
 }

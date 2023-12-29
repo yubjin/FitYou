@@ -22,13 +22,14 @@ import lombok.RequiredArgsConstructor;
 public class MemberServiceImpl implements MemberService{
 	private final MemberRepository memRepo;
 	private final PasswordEncoder passwordEncoder;
+
 	
 	SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:sss");
     Date time = new Date();
     String localTime = format.format(time);
 
 	@Override
-	public String join(MemberDTO memDTO) {
+	public Member join(MemberDTO memDTO) {
 		memDTO.encodingPassword(passwordEncoder);
 		Member mem = Member.builder()
 				.username(memDTO.getUsername())
@@ -40,7 +41,9 @@ public class MemberServiceImpl implements MemberService{
 				.role(Role.ROLE_MEMBER)
 				.build();
 		
-		return memRepo.save(mem).getUsername();
+		memRepo.save(mem);
+		
+		return mem;
 	}
 	
 	@Override
@@ -68,5 +71,5 @@ public class MemberServiceImpl implements MemberService{
 			return false;
 		}
 	}
-	
+
 }
