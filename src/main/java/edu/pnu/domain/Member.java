@@ -3,6 +3,8 @@ package edu.pnu.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,7 +22,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude= {"memberLikeList"})
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,6 +47,7 @@ public class Member {
 	private Role role;
 	
 	@OneToMany(mappedBy="member", fetch=FetchType.EAGER)
+	@JsonIgnore
 	private List<MemberLike> memberLikeList = new ArrayList<MemberLike>();
 	
 	

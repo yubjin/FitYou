@@ -5,22 +5,28 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import edu.pnu.domain.Customer;
+import edu.pnu.domain.CustomerImg;
 import edu.pnu.domain.Member;
-import edu.pnu.persistence.CustomerRepository;
+import edu.pnu.domain.MemberLike;
+import edu.pnu.dto.LikeDTO;
+import edu.pnu.persistence.CategoryRepository;
+import edu.pnu.persistence.CustomerImgRepository;
+import edu.pnu.persistence.MemberLikeRepository;
 import edu.pnu.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class MemberDetailServiceImpl implements MemberDetailService {
-	private final CustomerRepository cusRepo;
+	private final CustomerImgRepository cusRepo;
 	private final MemberRepository memRepo;
+	private final CategoryRepository cateRepo;
+	private final MemberLikeRepository memlikeRepo;
 	
 	@Override
-	public List<Customer> getCusHistory(int cusNum) {
+	public List<CustomerImg> getCusHistory(int cusNum) {
 		System.out.println("cusNum="+cusNum);
-		List<Customer> cusHistory = cusRepo.findAllByCusNum(cusNum);
+		List<CustomerImg> cusHistory = cusRepo.findAllByCusNum(cusNum);
 		System.out.println("cusHistory=" + cusHistory);
 		return cusHistory;
 	}
@@ -29,6 +35,21 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 	public boolean isLike(int cusNum) {
 		Optional<Member> findLike = memRepo.findByCusNum(cusNum);
 		return findLike.isPresent();
+	}
+
+	@Override
+	public void insertLike(LikeDTO likeDto) {
+		List<String> likelist = likeDto.getLike();
+		for(int i=0; i<likelist.size();i++) {
+			Member m = memRepo.findById(likeDto.getSeq()).get();
+			MemberLike memlike = MemberLike.builder()
+					.member(m)
+					.category(cateRepo.findSeqByName(likelist.get(i)))
+					.build();
+		
+			memlikeRepo.save(memlike);
+		}
+		
 	}
 
 }

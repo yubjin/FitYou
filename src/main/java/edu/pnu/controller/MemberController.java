@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.pnu.domain.Customer;
+import edu.pnu.domain.CustomerImg;
 import edu.pnu.domain.Member;
+import edu.pnu.dto.LikeDTO;
 import edu.pnu.dto.MemberDTO;
 import edu.pnu.service.MemberDetailService;
 import edu.pnu.service.MemberService;
@@ -61,8 +62,9 @@ public class MemberController {
 			String jwtToken = token.substring(7);
 			Member findMember = memService.getMypage(jwtToken);
 			myData.add(findMember);
-			List<Customer> cusHistory = memDetailService.getCusHistory(findMember.getCusNum());
+			List<CustomerImg> cusHistory = memDetailService.getCusHistory(findMember.getCusNum());
 			myData.add(cusHistory);
+			
 			return ResponseEntity.ok(myData);
 		}
 		return ResponseEntity.badRequest().body("");
@@ -75,4 +77,13 @@ public class MemberController {
 		else 
 			return true;
 	}
+	
+	@PostMapping("/memlike")
+	public ResponseEntity<?> insertLike(@RequestBody LikeDTO likeDto){
+		System.out.println(likeDto.toString());
+		memDetailService.insertLike(likeDto);
+		return ResponseEntity.ok("");
+	}
+	
+
 }
