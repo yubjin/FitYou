@@ -52,4 +52,10 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 		
 	}
 
+	@Override
+	public List<MemberLike> getLike(String jwtToken, Long memSeq) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -3,6 +3,7 @@ package edu.pnu.service;
 import java.util.List;
 
 import edu.pnu.domain.CustomerImg;
+import edu.pnu.domain.MemberLike;
 import edu.pnu.dto.LikeDTO;
 
 public interface MemberDetailService {
@@ -12,5 +13,7 @@ public interface MemberDetailService {
 	boolean isLike(int cusNum);
 
 	void insertLike(LikeDTO likeDto);
+
+	List<MemberLike> getLike(String jwtToken, Long memSeq);
 
 }
