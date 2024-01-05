@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.pnu.service.WebClientService;
 import lombok.AllArgsConstructor;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @RestController
 @AllArgsConstructor
@@ -16,7 +16,17 @@ public class WebClientController {
 	private final WebClientService webService;
 	
 	@GetMapping("/test")
-	public Mono<String> getStringFromFlask() {
+	public String getStringFromFlask() {
 		return webService.getStringFromFlask();
 	}
+	
+	@GetMapping("/style")
+	public String getStyle(){
+		return webService.getStyle();
+	}
+	@GetMapping("/styletest")
+	public Flux<byte[]> getStyleTest(){
+		return webService.getDataAsStream();
+	}
+	
 }
