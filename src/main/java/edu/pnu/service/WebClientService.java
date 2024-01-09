@@ -1,14 +1,13 @@
 package edu.pnu.service;
 
-import reactor.core.publisher.Flux;
-
 public interface WebClientService {
 
 	//Mono<String> getStringFromFlask();
-	String getStringFromFlask();
+	String getDataFromFlask();
 
 	String getStyle();
 
-	Flux<byte[]> getDataAsStream();
+	void fetchDataAndSaveToDb();
+
 
 }

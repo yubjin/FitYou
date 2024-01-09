@@ -1,8 +1,5 @@
 package edu.pnu.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.pnu.domain.CustomerImg;
 import edu.pnu.domain.Member;
-import edu.pnu.domain.MemberLike;
-import edu.pnu.dto.LikeDTO;
 import edu.pnu.dto.MemberDTO;
-import edu.pnu.service.MemberDetailService;
 import edu.pnu.service.MemberService;
 import lombok.AllArgsConstructor;
 
@@ -28,7 +21,7 @@ import lombok.AllArgsConstructor;
 public class MemberController {
 	
 	private final MemberService memService;
-	private final MemberDetailService memDetailService;
+
 	
 	@PostMapping("/join")
 	@ResponseBody
@@ -56,20 +49,6 @@ public class MemberController {
 		boolean isExist = memService.isMember(id);
 		return isExist;
 	}
-	@GetMapping("/getmem")
-	public ResponseEntity<?> getMypage(@RequestHeader(HttpHeaders.AUTHORIZATION) String token){
-		List<Object> myData= new ArrayList<Object>();
-		if (token != null && token.startsWith("Bearer ")) {
-			String jwtToken = token.substring(7);
-			Member findMember = memService.getMypage(jwtToken);
-			myData.add(findMember);
-			List<CustomerImg> cusHistory = memDetailService.getCusHistory(findMember.getCusNum());
-			myData.add(cusHistory);
-			
-			return ResponseEntity.ok(myData);
-		}
-		return ResponseEntity.badRequest().body("");
-	}
 	
 	@GetMapping("/survey")
 	public boolean isLike(String cusNum) {
@@ -79,20 +58,5 @@ public class MemberController {
 			return true;
 	}
 	
-	@GetMapping("/memlike")
-	public ResponseEntity<?> getLike(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestParam Long memSeq){
-		if (token != null&& token.startsWith("Bearer ")) {
-			String jwtToken = token.substring(7);
-			List<MemberLike> memlike = memDetailService.getLike(jwtToken, memSeq);
-			return ResponseEntity.ok(memlike);
-		}
-		return ResponseEntity.badRequest().body("");
-	}
-	
-	@PostMapping("/memlike")
-	public ResponseEntity<?> insertLike(@RequestBody LikeDTO likeDto){
-		memDetailService.insertLike(likeDto);
-		return ResponseEntity.ok("");
-	}
-	
+
 }

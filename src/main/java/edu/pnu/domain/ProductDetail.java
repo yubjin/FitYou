@@ -21,13 +21,14 @@ import lombok.ToString;
 public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ProductSeq;
+	private Long productSeq;
 	
-	private String ProdCode;
-	private String ProdName;
-	private String ProdColor;
-	private int ProdPrice;
-	private int Count;
+	private String prodCode;
+	private String prodName;
+	private String prodColor;
+	private String prodPrice;
+	private String prodImg;
+	private int count;
 	
 	
 }

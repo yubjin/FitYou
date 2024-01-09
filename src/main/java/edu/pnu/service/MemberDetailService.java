@@ -14,6 +14,6 @@ public interface MemberDetailService {
 
 	void insertLike(LikeDTO likeDto);
 
-	List<MemberLike> getLike(String jwtToken, Long memSeq);
+	List<MemberLike> getLike(String token);
 
 }

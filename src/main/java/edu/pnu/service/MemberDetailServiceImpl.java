@@ -1,9 +1,13 @@
 package edu.pnu.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.Claim;
 
 import edu.pnu.domain.CustomerImg;
 import edu.pnu.domain.Member;
@@ -53,9 +57,11 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 	}
 
 	@Override
-	public List<MemberLike> getLike(String jwtToken, Long memSeq) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberLike> getLike(String token) {
+		Map<String, Claim> member = JWT.decode(token).getClaims();
+		Member findMember = memRepo.findByUsername(member.get("id").asString()).get();
+		List<MemberLike> memlike = memlikeRepo.findByMemberSeq(findMember.getSeq());
+		return memlike;
 	}
 
 }

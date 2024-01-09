@@ -1,15 +1,28 @@
 package edu.pnu.service;
 
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import reactor.core.publisher.Flux;
+import edu.pnu.domain.Product;
+import edu.pnu.persistence.ProductRepository;
 
 @Service
 public class WebClientServiceImpl implements WebClientService{
 	private final WebClient webClient;
+	private final String Url = "http://10.125.121.210:5000/test";
+	@Autowired
+	private WebClient.Builder webClientBuilder;
+//	@Autowired
+//	private StyleRepository styleRepo;
+	@Autowired
+	private ProductRepository productRepo;
 
 	public WebClientServiceImpl(WebClient.Builder webClientBuilder) {
 		this.webClient = webClientBuilder
@@ -20,20 +33,13 @@ public class WebClientServiceImpl implements WebClientService{
 	}
 	
 	@Override
-	public String getStringFromFlask() {
+	public String getDataFromFlask() {
+
 		return webClient.get()
 				.uri("/test")
 				.retrieve()
 				.bodyToMono(String.class)
 				.block(); 
-	}
-
-	@Override
-	public Flux<byte[]> getDataAsStream(){	//외부 서버로부터 바이트 배열 데이터를 스트리밍으로 받음
-		return webClient.get()
-				.uri("/test")
-				.retrieve()
-				.bodyToFlux(byte[].class);
 	}
 
 	@Override
@@ -47,4 +53,22 @@ public class WebClientServiceImpl implements WebClientService{
                 .map(stringChunks -> String.join("", stringChunks))	// 모든 문자열을 결합
                 .block();
 	}
+	
+	 public void fetchDataAndSaveToDb() {					        // flask로부터 JSON 데이터 가져오기
+	        List<Product> imageData = webClientBuilder.build()
+	                .get()
+	                .uri(Url)
+	                .retrieve()
+	                .bodyToFlux(Product.class)
+	                .collectList()
+	                .block();
+
+	        // 가져온 데이터를 DB에 저장
+	        if (imageData != null) {
+	            for (Product prodEntity : imageData) {
+	                productRepo.save(prodEntity);
+	            }
+	        }
+	    }
+
 }
