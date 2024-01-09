@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,5 +59,14 @@ public class MemberController {
 			return true;
 	}
 	
-
+	@PutMapping("/edit")
+	public ResponseEntity<?> editMember(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestBody MemberDTO memDTO){
+		if (token != null && token.startsWith("Bearer ")) {
+			String jwtToken = token.substring(7);
+			memService.editMember(jwtToken, memDTO);
+			return ResponseEntity.ok("");
+		}
+		return ResponseEntity.badRequest().body("");
+	}
+	
 }

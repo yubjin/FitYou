@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.pnu.domain.Product;
 import edu.pnu.service.RecommendService;
 import lombok.AllArgsConstructor;
 
@@ -22,9 +23,8 @@ public class RecommendController {
 		System.out.println(token);
 		if (token != null && token.startsWith("Bearer ")) {
 			String jwtToken = token.substring(7);
-			List<String> imgUrls = recoService.getRecommend(jwtToken);
-			System.out.println(imgUrls.size());
-			return ResponseEntity.ok(imgUrls);
+			List<Product> products = recoService.getRecommend(jwtToken);
+			return ResponseEntity.ok(products);
 		}
 		return ResponseEntity.badRequest().body("");
 	}

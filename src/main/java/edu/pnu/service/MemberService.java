@@ -11,4 +11,6 @@ public interface MemberService {
 	Member getMypage(String token);
 
 	boolean deleteMember(String jwtToken, String pwd);
+
+	void editMember(String jwtToken, MemberDTO memDTO);
 }

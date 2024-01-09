@@ -41,8 +41,6 @@ public class Member {
 	
 	private String regidate;
 	
-	private String styleInfo;
-	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	

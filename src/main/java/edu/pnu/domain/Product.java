@@ -21,4 +21,6 @@ public class Product {
 	private String fileName;
 	private String imageUrl;
 	private Long style;
+	private String prodName;
+	private String prodPrice;
 }

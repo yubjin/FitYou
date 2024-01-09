@@ -36,7 +36,6 @@ public class MemberServiceImpl implements MemberService{
 				.pwd(memDTO.getPwd())
 				.age(memDTO.getAge())
 				.cusNum(memDTO.getCusNum())
-				.styleInfo(memDTO.getStyleInfo())
 				.regidate(localTime)
 				.role(Role.ROLE_MEMBER)
 				.build();
@@ -70,6 +69,17 @@ public class MemberServiceImpl implements MemberService{
 		}else {
 			return false;
 		}
+	}
+	
+	@Override
+	public void editMember(String token, MemberDTO memDTO) {
+		Map<String, Claim> member = JWT.decode(token).getClaims();
+		Member findMember = memRepo.findByUsername(member.get("id").asString()).get();
+		findMember.setAge(memDTO.getAge());
+		findMember.setCusNum(memDTO.getCusNum());
+		findMember.setPwd(memDTO.getPwd());
+		findMember.setUsername(memDTO.getUsername());
+		memRepo.save(findMember);
 	}
 
 }
