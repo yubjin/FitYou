@@ -25,7 +25,7 @@ public class Category {
 	@Id
 	private Long seq;
 	
-	private Long code;
+	private Long styleCode;
 	
 	private String name;
 	

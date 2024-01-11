@@ -36,15 +36,15 @@ public class RecommendServiceImpl implements RecommendService {
 		for(MemberLike memlike : memlikeList) {
 			System.out.println("memlike = " + memlike);
 			if (memlikeList.size() < 5) {
-				List<Product> temp = prodRepo.findRandImg10(memlike.getCategory().getSeq());
+				List<Product> temp = prodRepo.findRandImg10(memlike.getCategory().getStyleCode());
 				products.addAll(temp);
 			}
 			else if (memlikeList.size() <10) {
-				List<Product> temp = prodRepo.findRandImg5(memlike.getCategory().getSeq());
+				List<Product> temp = prodRepo.findRandImg5(memlike.getCategory().getStyleCode());
 				products.addAll(temp);
 			}
 			else {
-				List<Product> temp = prodRepo.findRandImg3(memlike.getCategory().getSeq());
+				List<Product> temp = prodRepo.findRandImg3(memlike.getCategory().getStyleCode());
 				products.addAll(temp);
 			}
 		}

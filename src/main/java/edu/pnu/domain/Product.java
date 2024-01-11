@@ -20,7 +20,7 @@ public class Product {
 	@Id
 	private String prodCode;
 	private String imageUrl;
-	private Long style;
+	private Long styleCode;
 	private String prodName;
 	private String prodPrice;
 	private String prodCategory;

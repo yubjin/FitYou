@@ -16,9 +16,9 @@ import net.jcip.annotations.Immutable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="customer_img")		//Mysql view 사용
+@Table(name="customer_image")		//Mysql view 사용
 @Immutable
-public class CustomerImg {
+public class CustomerImage {
 	@Id
 	private Long seq;
 	
@@ -30,8 +30,10 @@ public class CustomerImg {
 	private String prodName;	//상품명
 	private String colorName;	//칼라
 	private String size;		//사이즈
-	private String sellPrice;	//판매금액
+	private String prodPrice;	//판매금액
 	private int sellCount;		//수량
 	private String imageUrl;
+	private Long style;			//스타일
+	private String prodCategory;	//카테고리(top,pants 등)
 	
 }

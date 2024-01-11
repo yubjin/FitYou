@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.Claim;
 
-import edu.pnu.domain.CustomerImg;
+import edu.pnu.domain.CustomerImage;
 import edu.pnu.domain.Member;
 import edu.pnu.domain.MemberLike;
 import edu.pnu.dto.LikeDTO;
 import edu.pnu.persistence.CategoryRepository;
-import edu.pnu.persistence.CustomerImgRepository;
+import edu.pnu.persistence.CustomerImageRepository;
 import edu.pnu.persistence.MemberLikeRepository;
 import edu.pnu.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,15 +22,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class MemberDetailServiceImpl implements MemberDetailService {
-	private final CustomerImgRepository cusRepo;
+	private final CustomerImageRepository cusRepo;
 	private final MemberRepository memRepo;
 	private final CategoryRepository cateRepo;
 	private final MemberLikeRepository memlikeRepo;
 	
 	@Override
-	public List<CustomerImg> getCusHistory(int cusNum) {
+	public List<CustomerImage> getCusHistory(int cusNum) {
 		System.out.println("cusNum="+cusNum);
-		List<CustomerImg> cusHistory = cusRepo.findAllByCusNumOrderBySellDtDesc(cusNum);
+		List<CustomerImage> cusHistory = cusRepo.findAllByCusNumOrderBySellDtDesc(cusNum);
 		System.out.println("cusHistory=" + cusHistory);
 		return cusHistory;
 	}

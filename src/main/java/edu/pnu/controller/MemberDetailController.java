@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.pnu.domain.CustomerImg;
+import edu.pnu.domain.CustomerImage;
 import edu.pnu.domain.Member;
 import edu.pnu.domain.MemberLike;
 import edu.pnu.dto.LikeDTO;
@@ -33,7 +33,7 @@ public class MemberDetailController {
 			String jwtToken = token.substring(7);
 			Member findMember = memService.getMypage(jwtToken);
 			myData.add(findMember);
-			List<CustomerImg> cusHistory = memDetailService.getCusHistory(findMember.getCusNum());
+			List<CustomerImage> cusHistory = memDetailService.getCusHistory(findMember.getCusNum());
 			myData.add(cusHistory);
 			
 			return ResponseEntity.ok(myData);
