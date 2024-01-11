@@ -8,4 +8,6 @@ public interface RecommendService {
 
 	List<Product> getRecommend(String token);
 
+	List<Product> getBestProduct(String category);
+
 }

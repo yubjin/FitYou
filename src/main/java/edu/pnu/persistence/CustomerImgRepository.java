@@ -8,6 +8,6 @@ import edu.pnu.domain.CustomerImg;
 
 public interface CustomerImgRepository extends JpaRepository<CustomerImg, Long> {
 
-	List<CustomerImg> findAllByCusNum(int cusNum);
+	List<CustomerImg> findAllByCusNumOrderBySellDtDesc(int cusNum);
 
 }

@@ -1,6 +1,7 @@
 package edu.pnu.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -25,14 +26,15 @@ public class RecommendServiceImpl implements RecommendService {
 	private final MemberLikeRepository memlikeRepo;
 	private final ProductRepository prodRepo;
 	
-	
 	@Override
 	public List<Product> getRecommend(String token){
 		Map<String, Claim> member = JWT.decode(token).getClaims();
 		Member findMember = memRepo.findByUsername(member.get("id").asString()).get();
 		List<MemberLike> memlikeList = memlikeRepo.findByMemberSeq(findMember.getSeq());
+		System.out.println("memlikeList = " + memlikeList.toString());
 		List<Product> products = new ArrayList<Product>();
 		for(MemberLike memlike : memlikeList) {
+			System.out.println("memlike = " + memlike);
 			if (memlikeList.size() < 5) {
 				List<Product> temp = prodRepo.findRandImg10(memlike.getCategory().getSeq());
 				products.addAll(temp);
@@ -46,6 +48,14 @@ public class RecommendServiceImpl implements RecommendService {
 				products.addAll(temp);
 			}
 		}
+		Collections.shuffle(products);
 		return products;
 	}
+
+	@Override
+	public List<Product> getBestProduct(String category) {
+		List<Product> bestProducts = prodRepo.findTopByProdCategoryOrderByRankCntDesc(category);
+		return bestProducts;
+	}
+
 }

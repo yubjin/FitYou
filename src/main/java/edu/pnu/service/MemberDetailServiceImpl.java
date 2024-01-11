@@ -30,7 +30,7 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 	@Override
 	public List<CustomerImg> getCusHistory(int cusNum) {
 		System.out.println("cusNum="+cusNum);
-		List<CustomerImg> cusHistory = cusRepo.findAllByCusNum(cusNum);
+		List<CustomerImg> cusHistory = cusRepo.findAllByCusNumOrderBySellDtDesc(cusNum);
 		System.out.println("cusHistory=" + cusHistory);
 		return cusHistory;
 	}
@@ -53,7 +53,6 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 		
 			memlikeRepo.save(memlike);
 		}
-		
 	}
 
 	@Override

@@ -16,12 +16,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product {
+public class ProductRank {
 	@Id
 	private String prodCode;
-	private String imageUrl;
-	private Long style;
-	private String prodName;
-	private String prodPrice;
-	private String prodCategory;
+	
+	private int cnt;
+
 }
