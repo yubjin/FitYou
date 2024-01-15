@@ -26,22 +26,26 @@ public class WebClientServiceImpl implements WebClientService{
 
 	public WebClientServiceImpl(WebClient.Builder webClientBuilder) {
 		this.webClient = webClientBuilder
-				.baseUrl("http://10.125.121.210:5000")
+				.baseUrl("http://10.125.121.155:5000")
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 				
 				.build();
 	}
 	
 	@Override
-	public String getDataFromFlask() {
-
-		return webClient.get()
+	public String getDataFromFlask(List<String> selectList) {		//flask에 제품 코드 5개 보내고 추천데이터 받아오기
+		//List<String> prodList = productRepo.find2021(); 			//2021년도 제품을 랜덤으로 가져오기
+		System.out.println(selectList);
+		String response =  webClient.post()
 				.uri("/test")
+				.bodyValue(selectList)
 				.retrieve()
 				.bodyToMono(String.class)
-				.block(); 
+				.block();
+		return response;
 	}
 
+	
 	@Override
 	public String getStyle() {
 		return webClient.get()
@@ -55,7 +59,7 @@ public class WebClientServiceImpl implements WebClientService{
 	}
 	
 	 public void fetchDataAndSaveToDb() {					        // flask로부터 JSON 데이터 가져오기
-	        List<Product> imageData = webClientBuilder.build()
+	        List<Product> imageData = webClientBuilder.build()		// 나인온스 데이터를 k-fashion 분류에 따른 style로 분류한 json 데이터
 	                .get()
 	                .uri(Url)
 	                .retrieve()
@@ -70,5 +74,7 @@ public class WebClientServiceImpl implements WebClientService{
 	            }
 	        }
 	    }
+	 
+	 
 
 }

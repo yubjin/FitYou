@@ -10,4 +10,5 @@ public interface RecommendService {
 
 	List<Product> getBestProduct(String category);
 
+
 }

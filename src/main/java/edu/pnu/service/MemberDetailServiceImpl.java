@@ -63,4 +63,12 @@ public class MemberDetailServiceImpl implements MemberDetailService {
 		return memlike;
 	}
 
+	@Override
+	public List<CustomerImage> getLatest(String token) {
+		Map<String, Claim> member = JWT.decode(token).getClaims();
+		Member findMember = memRepo.findByUsername(member.get("id").asString()).get();
+		List<CustomerImage> latest = cusRepo.findlatest(findMember.getCusNum());
+		return latest;
+	}
+
 }

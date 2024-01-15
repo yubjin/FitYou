@@ -16,4 +16,6 @@ public interface MemberDetailService {
 
 	List<MemberLike> getLike(String token);
 
+	List<CustomerImage> getLatest(String token);
+
 }

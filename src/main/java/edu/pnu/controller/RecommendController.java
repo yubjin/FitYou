@@ -25,6 +25,7 @@ public class RecommendController {
 		if (token != null && token.startsWith("Bearer ")) {
 			String jwtToken = token.substring(7);
 			List<Product> products = recoService.getRecommend(jwtToken);
+			System.out.println("products = " + products.toString()); 
 			return ResponseEntity.ok(products);
 		}
 		return ResponseEntity.badRequest().body("");
@@ -35,5 +36,8 @@ public class RecommendController {
 		List<Product> best = recoService.getBestProduct(category);
 		return ResponseEntity.ok(best);
 	}
+	
+
+	
 	
 }

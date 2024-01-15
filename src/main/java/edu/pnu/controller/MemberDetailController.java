@@ -58,5 +58,15 @@ public class MemberDetailController {
 		return ResponseEntity.ok("");
 	}
 	
+	@GetMapping("/latest")
+	public ResponseEntity<?> getLatest(@RequestHeader(HttpHeaders.AUTHORIZATION) String token){
+		if (token != null && token.startsWith("Bearer ")) {
+			String jwtToken = token.substring(7);
+			List<CustomerImage> latest = memDetailService.getLatest(jwtToken);
+			return ResponseEntity.ok(latest);
+		}
+		return ResponseEntity.badRequest().body("");
+		
+	}
 
 }
