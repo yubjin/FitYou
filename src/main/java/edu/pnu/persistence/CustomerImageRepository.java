@@ -14,5 +14,7 @@ public interface CustomerImageRepository extends JpaRepository<CustomerImage, Lo
 	
 	@Query(value="SELECT * FROM customer_image WHERE cus_num = :cusnum AND (prod_code LIKE 'AI%' OR prod_code LIKE 'AH%') ORDER BY sell_dt DESC", nativeQuery = true)
 	List<CustomerImage> findlatest(@Param("cusnum") int cusNum);
-
+	
+	
+	List<CustomerImage> findByProdCode(String prodCode); 
 }

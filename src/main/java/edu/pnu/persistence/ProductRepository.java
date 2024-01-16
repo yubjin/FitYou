@@ -15,7 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 	@Query(value="SELECT prod_code FROM product WHERE prod_code LIKE 'AI%' ORDER BY RAND() LIMIT 5", nativeQuery = true)
 	List<String> find2021();
 	
-	
+	List<Product> findByProdCode(String code);
 	List<Product> findByProdCategory(String category);
 
 	@Query(value= "SELECT * FROM product WHERE style_code = :style ORDER BY RAND() LIMIT 5", nativeQuery = true)
