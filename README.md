@@ -61,7 +61,7 @@
 
   - ##### [기능명세서](https://docs.google.com/spreadsheets/)
 
-  - ##### [ERD](https://www.erdcloud.com/)
+  - ##### [ERD](https://www.erdcloud.com/d/m3jB4qgwE4JLzMGZS)
 
 - ##### 와이어프레임
 
