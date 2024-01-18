@@ -29,11 +29,7 @@
   * [프로젝트 소개](#📣-프로젝트-소개)
 - [서비스 시연](#서비스-시연)
 - [디렉토리 구조](#디렉토리-구조)
-- [상세 설명](#상세-설명)
-  * [1. 데이터 크롤링/전처리](#1-데이터-크롤링전처리)
-  * [2. 모델](#2-모델)
-  * [3. 프론트엔드 서버](#3-프론트엔드-서버)
-  * [4. 백엔드 서버](#4-백엔드-서버)
+
 
 
 ## ⚙ 기술스택
@@ -45,7 +41,7 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> 
 
 ### ✔️Back-end
-<img src="https://img.shields.io/badge/Spring-6DB31F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white"> <img src="https://img.shields.io/badge/Springsecurity-6DB39F?style=for-the-badge&logo=Springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/ApacheMaven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"> <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
+<img src="https://img.shields.io/badge/Spring-6DB31F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white"> <img src="https://img.shields.io/badge/Springsecurity-6DB39F?style=for-the-badge&logo=Springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/ApacheMaven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"> <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"> <img src="https://img.shields.io/badge/cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white">
 
 ## 📆 프로젝트 개요
 
@@ -59,9 +55,9 @@
 
 - ##### ✏️기획서
 
-  - ##### [기능명세서](https://docs.google.com/spreadsheets/)
+  - ##### [기능명세서](https://docs.google.com/spreadsheets/d/1e_Fbd5_JyyXxeHHA7HhxRh6Se_vC8uczQfzZqzjzoEs/edit#gid=0)
 
-  - ##### [ERD](https://www.erdcloud.com/)
+  - ##### [ERD](https://www.erdcloud.com/d/m3jB4qgwE4JLzMGZS)
 
 - ##### 와이어프레임
 
@@ -74,11 +70,11 @@
 
 ## 📣 프로젝트 소개
 
-##### 코로나 19 바이러스로 인한 언컨택트 시대를 맞이하여 많은 소비자들이 온라인 쇼핑몰을 이용하여 옷을 구매하고 있습니다.
+##### 변화하는 트렌드에 맞춰, 사람들은 오프라인 매장이나 온라인 쇼핑몰에서 옷을 구매합니다.
 
-##### 하지만, 본인에게 어울리는 옷을 찾는 데에 어려움을 겪는 사람들은 쇼핑몰에서 원하는 취향을 찾지 못한 채로 계속되는 인터넷 쇼핑에 피로를 느끼는 경우가 많고, 옷이 취향에 맞지 않아 반품을 하거나 중고거래를 이용하여 불필요한 소비가 빈번하게 발생하고 있습니다.
+##### 하지만, 본인에게 어울리는 옷을 찾는 데에 어려움을 겪는 사람들은 쇼핑몰에서 원하는 취향을 찾지 못한 채로 계속되는 인터넷 쇼핑에 피로를 느끼는 경우가 많고, 오프라인 매장에서는 점원들이 고객들에게 옷을 추천해줄 때 객관적인 지표가 없어 추천에 어려움을 겪는 경우가 생기고 있습니다.
 
-##### 이와 같이 자신에게 어울리는 옷을 찾는 데 어려움을 겪고 있는 사람들을 위해 저희는 빅데이터 및 머신러닝 기반의 맞춤형 패션 추천 웹 플랫폼인 FitYou를 개발하였습니다.
+##### 이와 같이 자신에게 어울리는 옷을 찾는 데 어려움을 겪고 있는 사람들과 고객들에게 옷을 추천하는데에 어려움을 겪는 사람들을 위해 저희는 빅데이터 및 머신러닝 기반의 맞춤형 패션 추천 웹 플랫폼인 FitYou를 개발하였습니다.
 
 ##### FitYou의 이용자들은
 
@@ -86,18 +82,10 @@
 
 ##### 2. 개인의 선호 스타일 등의 개인정보로 취향 맞춤 의류를 추천받을 수 있습니다.
 
-##### 또한, 옷 상세 정보를 조회하는 기능을 통해 사용자들이 옷을 구매하는데 많은 도움을 제공하고 있습니다. 
 
 
 
 ## 📣 주요 기능
-
-#### 소셜 로그인을 통해 간편하게 서비스 이용 가능
-
-> Google, Kakao 소셜 로그인을 이용하여, 간단한 신체정보 입력만으로 SSAFit을 이용할 수 있습니다.
->
-> 회원정보는 JWT Token, Access Token으로 관리되고 있습니다.
-
 
 
 #### 개인 취향 맞춤 추천 서비스
@@ -107,61 +95,16 @@
 
 - 개인 별 선호하는 스타일, 카테고리 별로 옷을 추천하는 기능을 제공합니다.
 
+- 구매내역을 기반으로 기존에 구매했던 옷들과 유사한 옷들을 추천하는 기능을 제공합니다.
 
-- **옷 디테일 페이지**
-
-  - 디테일 페이지에서 해당 옷이 언제 가장 많이 구매되었고, 유저들의 리뷰를 확인할 수 있습니다.
-  - 또한, 해당 옷의 부가적인 정보(가격, 카테고리)를 제공합니다.
-
-
-
-
-## 📣 서비스 아키텍쳐
 
 
 
 ## 📣 적용한 빅데이터 기술 사항. 
 - k-fashion data set
-
-
-
-
-
-## ⚙ 설치 및 실행 방법
-
-#### 서비스 아키텍쳐 구조 및 실행 방법
-
-
-
-#### FrontEnd(React)
-
-```bash
-npm install --global yarn
-cd frontend
-npm i
-yarn start(or npm start)
-```
-
-
-
-#### BackEnd(SpringBoot)
-
-```shell
-cd backend/backend-java
-./gradlew build -Pprofile=prod
-◦sudo java -jar -Dspring.profiles.active=prod [생성된 JAR 파일명].jar
-```
-
-
-
-#### Data(Pytorch)
-
-```bash
-pip install fastapi
-
-```
-
-
+- Autoencoder (이용자의 선호 상품과 유사한 상품을 추천해주기 위해 이미지 특징을 추출하는 모델)
+- Resnet18 (제품들을 K-fashion data set에 있는 카테고리로 나누기 위해 사용한 모델)
+- U2net (오토인코더의 특징 추출을 위해 이미지의 배경을 제거하는 모델)
 
 
 
@@ -170,7 +113,7 @@ pip install fastapi
 ##### 최종 발표 자료
 
 - PPT
-  - [최종 발표 PPT]
+  - [최종 발표 PPT](https://docs.google.com/presentation/d/1JtB2IeLISEMlN15uw7cnGCxpZaHZFr2D1PrUT3E3y64/edit#slide=id.g2aff737389a_10_8)
 
   
   
