@@ -2,7 +2,6 @@
 
 #### 빅데이터 기반 개인 맞춤 패션 추천 플랫폼
 
-<!-- ![image-20220404120231497](README.assets/main.png) -->
 
 
 ## 👪 팀원 소개
@@ -10,12 +9,12 @@
 ##### 윤미린
 
 - **빅데이터 분석 및 추천** 
-- Github : https://github.com/
+- Github : https://github.com/mirinyun
 
 ##### 박준형
 
 - **프론트 엔드 React 개발** 
-- Github : https://github.com/
+- Github : https://github.com/DevJunParkisMe
 
 ##### 신유빈
 
@@ -59,12 +58,7 @@
 
   - ##### [ERD](https://www.erdcloud.com/d/m3jB4qgwE4JLzMGZS)
 
-- ##### 와이어프레임
-
-  - ##### [와이어프레임 확인](https://www.figma.com/)
-
 - #### **[팀 노션](https://curly-moonflower-931.notion.site/FitYou-b9ab5107e7914e0399f1e59c1edd2ef4)**
-
 
 
 
@@ -83,12 +77,7 @@
 ##### 2. 개인의 선호 스타일 등의 개인정보로 취향 맞춤 의류를 추천받을 수 있습니다.
 
 
-
-
-## 📣 주요 기능
-
-
-#### 개인 취향 맞춤 추천 서비스
+### 개인 취향 맞춤 추천 서비스
 
 > 개인의 취향에 맞는 옷을 추천합니다.
 
@@ -100,12 +89,38 @@
 
 
 
+## 📣 주요 기능
+#### 메인화면
+<img src="https://github.com/yubjin/FitYou/assets/116477922/9cfdea89-b7b8-4f1e-ac2b-77fbeb961939">
+
+#### 로그인화면
+<img src="https://github.com/yubjin/FitYou/assets/116477922/13193ac8-3e7d-4417-9fdd-dbac0b8333e2">
+
+#### 구매내역 선택 화면
+>구매내역에서 비슷한 스타일을 추천받고 싶은 제품을 선택할 수 있습니다.
+
+<img src="https://github.com/yubjin/FitYou/assets/116477922/9b30876b-7fc0-43a7-bf88-0de613451dff">
+
+#### 의류 추천 화면
+>구매내역에서 선택한 옷과 유사도가 가장 높은 옷을 추천해줍니다.
+
+<img src="https://github.com/yubjin/FitYou/assets/116477922/a51500f1-63f7-459f-8ad5-972ebc7b7764">
+
+
+#### 코디 시뮬레이션 화면
+<img src="https://github.com/yubjin/FitYou/assets/116477922/e313ac6f-438b-42ba-a938-0cd9fe56d1c0">
+
+
+
 ## 📣 적용한 빅데이터 기술 사항. 
 - k-fashion data set
 - Autoencoder (이용자의 선호 상품과 유사한 상품을 추천해주기 위해 이미지 특징을 추출하는 모델)
 - Resnet18 (제품들을 K-fashion data set에 있는 카테고리로 나누기 위해 사용한 모델)
-- U2net (오토인코더의 특징 추출을 위해 이미지의 배경을 제거하는 모델)
 
+Input
+- 배경 제거한 상품 이미지
+
+- U2net (오토인코더의 특징 추출을 위해 이미지의 배경을 제거하는 모델)
 
 
 ## 📣 최종산출물
@@ -116,7 +131,4 @@
   - [최종 발표 PPT](https://docs.google.com/presentation/d/1JtB2IeLISEMlN15uw7cnGCxpZaHZFr2D1PrUT3E3y64/edit#slide=id.g2aff737389a_10_8)
 
   
-  
-- 홈페이지
-  
-  - https://localhost:3000
+
